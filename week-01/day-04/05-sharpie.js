@@ -13,14 +13,21 @@
 class Sharpie {
   constructor(color, width, inkAmount = 100) {
     this.color = color
-    this.width = width
-    this.inkAmount = inkAmount
+    this.width = width > 1 ? width : 1
+    this.inkAmount = inkAmount > 0 ? inkAmount : 0
   }
+
   use(amount) {
+    amount = amount > 0 ? amount : 0
+    if (this.inkAmount < amount) {
+      this.inkAmount = 0
+      console.log(`Run out of ink, can't use anymore`)
+    } else {
       this.inkAmount -= amount
+    }
   }
 }
 
-let sharpie1 = new Sharpie('red', 10)
-sharpie1.use(10)
+let sharpie1 = new Sharpie('red', 10, 10)
+sharpie1.use(19)
 console.log(sharpie1)
