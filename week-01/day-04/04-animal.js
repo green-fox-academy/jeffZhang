@@ -24,3 +24,5 @@ class Animal{
         this.thirst += 1
     }
 }
+
+module.exports = Animal

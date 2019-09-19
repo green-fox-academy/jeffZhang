@@ -6,7 +6,7 @@
 // a text
 // a publicationDate
 class BlogPost {
-  constructor(authorName, title, text, publicationDate) {
+  constructor(authorName = 'Jeff', title = 'Book', text = '', publicationDate = '2019.09.19') {
     this.authorName = authorName
     this.title = title
     this.text = text
@@ -41,3 +41,5 @@ let blog3 = new BlogPost(
   'Daniel Hanley, a cybersecurity engineer at IBM, doesn’t want to be the center of attention. When I asked to take his picture outside one of IBM’s New York City offices, he told me that he wasn’t really into the whole organizer profile thing.',
   '2017.03.28.'
 )
+
+module.exports = BlogPost
