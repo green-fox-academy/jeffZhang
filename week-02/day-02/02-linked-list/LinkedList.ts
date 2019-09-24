@@ -9,12 +9,13 @@ class LinkedList implements LinkedListInterface {
   }
 
   append(value: string): void {
-    if (this.head === null) {
+    if (!this.head) {
       this.head = new NodeClass(value)
       return
     }
+
     let currentNode: NodeClass = this.head
-    while (currentNode.next != null) {
+    while (currentNode.next) {
       currentNode = currentNode.next
     }
     currentNode.next = new NodeClass(value)
@@ -29,6 +30,7 @@ class LinkedList implements LinkedListInterface {
   getNode(index: number): NodeClass | null {
     let counter = 0
     let node = this.head
+
     while (node) {
       if (counter === index) {
         return node
@@ -67,6 +69,7 @@ class LinkedList implements LinkedListInterface {
   get(index: number): string {
     let counter = 0
     let node = this.head
+
     while (node) {
       if (counter === index) {
         return node.data
@@ -109,7 +112,7 @@ class LinkedList implements LinkedListInterface {
     }
 
     // node needs to be deleted from the front of the list i.e. before the head.
-    if (index === 0) {
+    if (!index) {
       removedElementData = this.head.data
       this.head = this.head.next
       return removedElementData
