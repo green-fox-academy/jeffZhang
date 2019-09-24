@@ -14,7 +14,7 @@ class LinkedList implements LinkedListInterface {
       return
     }
 
-    let currentNode: NodeClass = this.head
+    let currentNode = this.head
     while (currentNode.next) {
       currentNode = currentNode.next
     }
@@ -67,17 +67,9 @@ class LinkedList implements LinkedListInterface {
   }
 
   get(index: number): string {
-    let counter = 0
-    let node = this.head
-
-    while (node) {
-      if (counter === index) {
-        return node.data
-      }
-      counter++
-      node = node.next
-    }
-    return '!Get nothing from an empty node.'
+    return this.getNode(index)
+      ? this.getNode(index).data
+      : '!Get nothing from an empty node.'
   }
 
   removeItem(value: string): void {
@@ -85,23 +77,18 @@ class LinkedList implements LinkedListInterface {
       console.log('!Empty list')
       return
     }
-    let previousNode = this.head,
-      tempCurrent = this.head,
-      currentNode = this.head
-
-    while (currentNode && currentNode.data !== value) {
-      tempCurrent = currentNode
-      previousNode = tempCurrent
-      currentNode = currentNode.next
-      console.log(currentNode)
-    }
-
-    if (!currentNode) {
-      console.log(`!Can't find ${value} in this list`)
+    if (value === this.head.data) {
+      this.head = this.head.next
       return
     }
-    if (currentNode.data === value) {
-      previousNode.next = currentNode.next
+
+    let currentNode = this.head
+    while (currentNode.next) {
+      if (currentNode.next.data === value) {
+        currentNode.next = currentNode.next.next
+        return
+      }
+      currentNode = currentNode.next
     }
   }
 
@@ -112,7 +99,7 @@ class LinkedList implements LinkedListInterface {
     }
 
     // node needs to be deleted from the front of the list i.e. before the head.
-    if (!index) {
+    if (index <= 0) {
       removedElementData = this.head.data
       this.head = this.head.next
       return removedElementData
