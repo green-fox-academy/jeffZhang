@@ -27,7 +27,7 @@ class Stack implements StackInterface {
   }
 
   push(value: string): void {
-    if (this.head === null) {
+    if (!this.head) {
       this.head = new NodeClass(value)
       return
     }
@@ -40,7 +40,7 @@ class Stack implements StackInterface {
   }
 
   pop(): string {
-    if (this.head === null) {
+    if (!this.head) {
       return '!Empty list, nothing can be popped out.'
     }
 
