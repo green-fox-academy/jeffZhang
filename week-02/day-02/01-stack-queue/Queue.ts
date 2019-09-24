@@ -11,9 +11,7 @@ class Queue implements QueueInterface {
   }
 
   peek(): string {
-    return this.data.length
-      ? this.data[this.data.length - 1]
-      : '!No data to peek'
+    return this.data.length ? this.data[0] : '!No data to peek'
   }
 
   add(value: string): void {
