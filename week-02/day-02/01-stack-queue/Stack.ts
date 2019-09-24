@@ -7,22 +7,24 @@ class Stack implements StackInterface {
     this.data = []
   }
 
-  empty() {
+  empty(): boolean {
     return !this.data.length
   }
 
-  peek() {
-    return this.data.length ? this.data[this.data.length - 1] : null
+  peek(): string {
+    return this.data.length
+      ? this.data[this.data.length - 1]
+      : '!No data to peek'
   }
 
-  push(value: string) {
+  push(value: string): void {
     this.data.push(value)
   }
 
-  pop() {
+  pop(): string {
     if (this.data.length) {
       return this.data.pop()
     }
-    throw new Error('!No element can be popped out.')
+    return '!No element can be popped out.'
   }
 }

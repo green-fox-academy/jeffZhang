@@ -6,22 +6,24 @@ class Queue implements QueueInterface {
     this.data = []
   }
 
-  empty() {
+  empty(): boolean {
     return !this.data.length
   }
 
-  peek() {
-    return this.data.length ? this.data[this.data.length - 1] : null
+  peek(): string {
+    return this.data.length
+      ? this.data[this.data.length - 1]
+      : '!No data to peek'
   }
 
-  add(value: string) {
+  add(value: string): void {
     this.data.push(value)
   }
 
-  remove() {
+  remove(): string {
     if (this.data.length) {
       return this.data.shift()
     }
-    throw new Error('!No element can be popped out.')
+    return '!No element can be removed.'
   }
 }
