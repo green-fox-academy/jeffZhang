@@ -3,9 +3,7 @@ function bubbleSort(array: number[]): number[] {
   for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array.length; j++) {
       if (array[i] > array[j]) {
-        let temp = array[i]
-        array[i] = array[j]
-        array[j] = temp
+        ;[array[i], array[j]] = [array[j], array[i]]
       }
     }
   }
@@ -24,9 +22,7 @@ function bubbleSort2(array: number[]): number[] {
     isSorted = true
     for (let i = 0; i < lastUnsorted; i++) {
       if (array[i] > array[i + 1]) {
-        let temp = array[i]
-        array[i] = array[i + 1]
-        array[i + 1] = temp
+        ;[array[i], array[i + 1]] = [array[i + 1], array[i]]
         isSorted = false
       }
     }
