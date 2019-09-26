@@ -1,4 +1,5 @@
 const readline = require('readline')
+const Board = require('./Board')
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -11,6 +12,7 @@ const question = str => new Promise(resolve => rl.question(str, resolve))
 let boardSize = 0
 let minesNumber = 0
 let fieldToReveal = ''
+let board
 
 // A list of all the steps involved in our program
 const steps = {
@@ -33,11 +35,12 @@ const steps = {
       console.log(`That's not a valid number for the number of mines!`)
       return steps.setMinesNumber()
     }
+    board = new Board(boardSize, minesNumber)
     return steps.printGameBoard()
   },
 
   printGameBoard: async () => {
-    console.log('print game board.')
+    console.log(board.status)
     return steps.revealField()
   },
 

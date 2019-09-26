@@ -7,4 +7,8 @@ module.exports = class Cell {
     this.mined = mined
     this.neighborMineCount = neighborMineCount
   }
+
+  get status() {
+    return this.opened ? (this.mined ? 'X' : this.neighborMineCount) : '#'
+  }
 }
