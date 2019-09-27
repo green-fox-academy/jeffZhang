@@ -45,10 +45,12 @@ const steps = {
   },
 
   revealField: async () => {
-    fieldToReveal = await question(`What field to reveal?\n>`)
-    if (fieldToReveal === 'quit') {
+    if (fieldToReveal === 'quit' || board.gameOver) {
+      console.log('Game over.')
       return steps.end()
     }
+    fieldToReveal = await question(`What field to reveal?\n>`)
+    board.openACell(fieldToReveal)
     return steps.printGameBoard()
   },
 

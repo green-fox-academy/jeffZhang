@@ -6,6 +6,7 @@ class Board {
     //use map instead of object to store all the cells
     //reason(note for myself): map has order.
     this.board = new Map()
+    this.gameOver = false
 
     for (let row = 0; row < boardSize; row++) {
       for (let column = 0; column < boardSize; column++) {
@@ -59,10 +60,49 @@ class Board {
     return this.board.get(id) ? (this.board.get(id).mined ? 1 : 0) : 0
   }
 
+  openACell(id) {
+    if (!this.gameOver) {
+      let cell = this.board.get(id)
+
+      if (!cell.opened) {
+        if (cell.mined) {
+          this.gameOver = true
+          console.log('!Boom.')
+          return
+        } else {
+          cell.opened = true
+          if (!cell.neighborMineCount) {
+            let neighbors = getNeighbors(id)
+            for (let i = 0; i < neighbors.length; i++) {
+              // console.log(`neighbors of ${id}`, neighbors)
+              let neighborID = neighbors[i],
+                neighbor = this.board.get(neighborID)
+              if (!neighbor.opened && !neighbor.mined) {
+                this.openACell(neighborID)
+              }
+            }
+          }
+        }
+      } else {
+        console.log('This cell has been opened.')
+        return
+      }
+    }
+  }
+
+  openAllCells() {
+    this.board.forEach(cell => {
+      cell.opened = true
+    })
+  }
+
   get status() {
     let counter = 1,
       result = ''
 
+    if (this.gameOver) {
+      this.openAllCells()
+    }
     this.board.forEach(cell => {
       result += cell.status + ' '
       if (!(counter % 10)) {
