@@ -14,3 +14,5 @@ class Garden {
     return this.area() / this.circumference()
   }
 }
+
+module.exports = Garden

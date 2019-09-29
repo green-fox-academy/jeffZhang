@@ -21,4 +21,6 @@
   console.log(garden.area())
   console.log(garden.circumference())
   console.log(garden.efficiency())
+
+  module.exports = Garden
 })()
