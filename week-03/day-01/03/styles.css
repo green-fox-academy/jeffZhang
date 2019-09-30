@@ -1,0 +1,24 @@
+html {
+  font-size: 36px;
+  color: white;
+}
+
+.wrapper {
+  width: 380px;
+  padding: 16px;
+  background-color: #4185f4;
+  margin: 5px;
+}
+
+.wrapper div {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.north {
+  background-color: #e67676;
+}
+
+.south {
+  background-color: #a9e6e6;
+}

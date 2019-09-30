@@ -1,0 +1,13 @@
+html {
+  font-size: 36px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+div {
+  margin: 20px;
+  padding: 15px;
+  height: 142px;
+  width: 360px;
+  border: thick solid #7dce94;
+  background-color: #1490a1;
+}
