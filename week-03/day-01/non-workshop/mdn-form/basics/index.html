@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form action="/my-handling-form-page" method="post">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Input your name" />
+      </div>
+      <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" value="Input your email" />
+      </div>
+      <div>
+        <label for="msg">Message:</label>
+        <textarea id="msg">Input your message</textarea>
+      </div>
+      <div class="button">
+        <button type="submit">Send your message</button>
+      </div>
+    </form>
+
+    <form>
+      <fieldset>
+        <legend>Fruit juice size</legend>
+        <p>
+          <input type="radio" name="size" id="size_1" value="small" />
+          <label for="size_1">Small</label>
+        </p>
+        <p>
+          <input type="radio" name="size" id="size_2" value="medium" />
+          <label for="size_2">Medium</label>
+        </p>
+        <p>
+          <input type="radio" name="size" id="size_3" value="large" />
+          <label for="size_3">Large</label>
+        </p>
+      </fieldset>
+    </form>
+
+    <p>Required fields are followed by <abbr title="required">*</abbr>.</p>
+    <div>
+      <label for="username">Name: <abbr title="required">*</abbr></label>
+      <input id="username" type="text" name="username" />
+    </div>
+  </body>
+</html>

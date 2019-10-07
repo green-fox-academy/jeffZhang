@@ -1,0 +1,39 @@
+a {
+  color: blue;
+}
+
+a[href^='#'] {
+  background-color: gold;
+}
+
+a[href*='example'] {
+  background-color: silver;
+}
+
+a[href*='insensitive' i] {
+  color: cyan;
+}
+
+a[href$='.org'] {
+  color: red;
+}
+
+div[lang] {
+  font-weight: bold;
+}
+
+div[lang~='en-us' i] {
+  color: blue;
+}
+
+div[lang='pt'] {
+  color: green;
+}
+
+div[lang|='zh'] {
+  color: red;
+}
+
+div[data-lang='zh-tw' i] {
+  color: purple;
+}

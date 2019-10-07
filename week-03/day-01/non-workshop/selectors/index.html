@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="universal.css" />
+    <link rel="stylesheet" href="attribute.css" />
+    <link rel="stylesheet" href="combinators.css" />
+  </head>
+  <body>
+    <ul>
+      <li><a href="#internal">Internal link</a></li>
+      <li><a href="http://example.com">Example link</a></li>
+      <li><a href="#InSensitive">Insensitive internal link</a></li>
+      <li><a href="http://example.org">Example org link</a></li>
+    </ul>
+
+    <div lang="en-us en-gb en-au en-nz">Hello World!</div>
+    <div lang="pt">Olá Mundo!</div>
+    <div lang="zh-CN">世界您好！</div>
+    <div lang="zh-TW">世界您好！</div>
+    <div data-lang="zh-TW">?世界您好！</div>
+
+    <p class="warning">
+      <span lang="en-us">A green span</span> in a red paragraph.
+    </p>
+    <p id="maincontent" lang="en-gb">
+      <span class="warning">A red span</span> in a green paragraph.
+    </p>
+
+    <ul>
+      <li>One</li>
+      <li>Two!</li>
+      <li>Three</li>
+    </ul>
+
+    <span>This is not red.</span>
+    <p>Here is a paragraph.</p>
+    <code>Here is some code.</code>
+    <span>And here is a span.</span>
+
+    <div>
+      <span
+        >Span 1. In the div.
+        <span>Span 2. In the span that's in the div.</span>
+      </span>
+    </div>
+    <span>Span 3. Not in a div at all</span>
+  </body>
+</html>

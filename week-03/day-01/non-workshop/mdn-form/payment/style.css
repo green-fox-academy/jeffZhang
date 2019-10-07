@@ -1,0 +1,63 @@
+h1 {
+  margin-top: 0;
+}
+
+ul {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+form {
+  border: thin solid #ccc;
+  border-radius: 1em;
+  width: 400px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+label span {
+  display: inline-block;
+  text-align: right;
+  width: 120px;
+}
+
+input,
+textarea {
+  font: 1em sans-serif;
+  box-sizing: border-box;
+  width: 250px;
+  border: 1px solid #999;
+}
+
+fieldset {
+  width: 250px;
+  box-sizing: border-box;
+  margin-left: 120px;
+  border: 1px solid #999;
+}
+
+button {
+  margin: 20px 0 0 124px;
+}
+
+label {
+  position: relative;
+}
+
+label em {
+  position: absolute;
+  right: 5px;
+  top: 20px;
+}
+
+input[type='radio'] {
+  width: auto;
+  border: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #000000;
+}

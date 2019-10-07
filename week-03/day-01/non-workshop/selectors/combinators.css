@@ -1,0 +1,19 @@
+li:first-of-type + li {
+  color: red;
+}
+
+p ~ span {
+  color: red;
+}
+
+span {
+  background-color: pink;
+}
+
+div > span {
+  background-color: green;
+}
+
+/* div span {
+  background-color: DodgerBlue;
+} */
