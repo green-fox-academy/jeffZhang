@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 800px;
+}
+
+.header {
+  background-color: purple;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+.header ul {
+  justify-content: flex-start;
+}
+
+.header li {
+  width: 80px;
+  height: 30px;
+  background-color: cyan;
+  margin-left: 10px;
+}
+
+.header ul:last-of-type {
+  justify-content: flex-end;
+}
+
+.header ul:last-of-type li {
+  width: 30px;
+  margin: 0 10px 0 0;
+}
+
+.page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page > div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.page > div[class='main'] {
+  flex-grow: 5;
+  background-color: yellow;
+}
+
+.page > div[class='sidebar'] {
+  width: 300px;
+  background-color: green;
+}
+
+.main-middle > ul {
+  flex-wrap: wrap;
+}
+
+.main-middle li {
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  margin: 5px;
+}
+
+p {
+  padding: 10px;
+  text-align: justify;
+}
+
+.side-upper > ul {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.side-upper li {
+  width: 100%;
+  height: 40px;
+  background-color: purple;
+  margin-bottom: 15px;
+}
