@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  background-color: yellow;
+  justify-content: space-between;
+  list-style-type: none;
+  align-items: center;
+}
+
+.item {
+  width: 70px;
+  height: 70px;
+  background-color: purple;
+  margin-right: 10px;
+}
+
+.item:last-of-type {
+  margin: 0;
+}
