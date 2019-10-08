@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 500px;
+}
+
+.header {
+  background-color: purple;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+li {
+  width: 80px;
+  height: 30px;
+  background-color: cyan;
+  margin-left: 10px;
+}
+
+.page {
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page div {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.page div[class='main'] {
+  flex-grow: 2;
+  background-color: yellow;
+}
+
+.page div[class='sidebar'] {
+  background-color: green;
+}
