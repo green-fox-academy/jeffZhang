@@ -1,0 +1,10 @@
+ul {
+  list-style: none;
+}
+
+li[class='default'] {
+  background-image: url('91.gif');
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+}
