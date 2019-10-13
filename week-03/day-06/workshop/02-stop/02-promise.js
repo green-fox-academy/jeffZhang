@@ -1,32 +1,33 @@
 const d = document
 const button = d.querySelector('button')
 
-let buttonClicked = false
+let timer
 let buttonClickedCount = 0
 
 window.addEventListener('load', () => {
-  let timer = setTimeout(() => {
+  timer = setTimeout(() => {
     alert('5 secs passed')
-  }, 5000)
-
-  button.addEventListener('click', () => {
-    buttonClickedCount++
-    if (buttonClickedCount === 1) {
-      buttonClicked = !buttonClicked
-
-      new Promise((resolve, reject) => {
-        if (!buttonClicked) {
-          resolve('Button is ')
-        } else {
-          clearTimeout(timer)
-          reject('Button is clicked, no alert.')
-        }
-      }).catch(error => {
-        console.log(error)
-        return error
-      })
-    } else {
-      console.log('Clicked more than once')
-    }
-  })
+  }, 2000)
 })
+
+button.addEventListener('click', () => {
+  promiseFunc()
+})
+
+const promiseFunc = () => {
+  return new Promise(resolve => {
+    resolve(++buttonClickedCount)
+  })
+    .then(count => {
+      if (count === 1) {
+        clearTimeout(timer)
+        console.log('Timer cancelled') //intuitive log info
+        return count //for future use cases
+      } else {
+        return Promise.reject(count)
+      }
+    })
+    .catch(error => {
+      console.log(`Clicked ${error} times`) //intuitive log info
+    })
+}
