@@ -5,7 +5,9 @@ const header = d.querySelector('h1')
 const button = d.querySelector('button')
 
 const fetchNames = url => {
-  return fetch(url).then(response => response.json())
+  return fetch(url)
+    .then(response => response.json())
+    .catch(error => console.log(error.message))
 }
 
 const pourMeAnothr = async url => {
