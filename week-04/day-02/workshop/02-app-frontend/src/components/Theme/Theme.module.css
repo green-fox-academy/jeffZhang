@@ -1,0 +1,58 @@
+.theme {
+  width: 100%;
+  height: 100%;
+  background-color: #50e2c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white-board {
+  width: 60%;
+  height: 70%;
+  background-color: #fff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-family: 'Lato', sans-serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: #b8b8b8;
+  text-align: center;
+  height: 64px;
+}
+
+.search-form {
+  height: 6em;
+  padding: 1.5em 2em;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.input {
+  box-sizing: border-box;
+  font-size: 2em;
+}
+
+.button {
+  background-color: #df69e8;
+  box-sizing: border-box;
+  width: 6em;
+}
+
+.button-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.todos-list {
+  background-color: red;
+  padding: 1em 2em;
+  box-sizing: border-box;
+  overflow: auto;
+}
