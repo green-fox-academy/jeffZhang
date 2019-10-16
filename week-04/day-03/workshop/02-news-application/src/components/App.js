@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import './App.css'
 
 import { NEWS_API_KEY, getNewsURL } from '../lib/helpers'
+import Spinner from './Spinner'
 
 class App extends Component {
   state = {
-    articles: []
+    articles: [],
+    loaded: false
   }
 
   componentDidMount() {
@@ -17,15 +19,20 @@ class App extends Component {
       await this.setState({
         articles: [...response.articles]
       })
+      await this.setState({ loaded: true })
     }, 5000)
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.articles.map(article => (
-          <p key={article.title}>{article.title}</p>
-        ))}
+        {this.state.loaded ? (
+          this.state.articles.map(article => (
+            <p key={article.title}>{article.title}</p>
+          ))
+        ) : (
+          <Spinner />
+        )}
       </div>
     )
   }
