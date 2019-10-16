@@ -4,6 +4,7 @@ class Component1 extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      name: 'Component1',
       startTime: new Date()
     }
   }
@@ -17,8 +18,8 @@ class Component1 extends Component {
   componentWillUnmount() {
     let unmountTime = new Date()
     this.props.handleFunction(
-      'Component1',
-      (unmountTime - this.state.startTime)/1000
+      this.state.name,
+      Math.round((unmountTime - this.state.startTime) / 1000)
     )
   }
 

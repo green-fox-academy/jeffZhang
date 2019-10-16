@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.css'
 
-import Component1 from './components/component1'
-import Component2 from './components/component2'
+import Component1 from './components/Component1'
+import Component2 from './components/Component2'
+import Table from './components/Table'
 
 class App extends Component {
   constructor(props) {
@@ -19,36 +20,13 @@ class App extends Component {
         */
       ]
     }
+    this.handleData = this.handleData.bind(this)
   }
 
-  handleAddTableRow = (name, time) => {
+  handleData = (name, time) => {
     this.setState(prevState => ({
       records: [...prevState.records, { name, time }]
     }))
-  }
-
-  createTable = data => {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th colSpan="2">The table header</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(datum => (
-            <tr>
-              <td>
-                <strong>{datum.name}</strong>
-              </td>
-              <td>
-                <strong>{datum.time} s</strong>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )
   }
 
   render() {
@@ -61,13 +39,13 @@ class App extends Component {
         <Link to="/2" className="link">
           2
         </Link>
-        {this.createTable(this.state.records)}
+        <Table data={this.state.records} />
         <Switch>
           <Route path="/1">
-            <Component1 handleFunction={this.handleAddTableRow.bind(this)} />
+            <Component1 handleFunction={this.handleData} />
           </Route>
           <Route path="/2">
-            <Component2 handleFunction={this.handleAddTableRow.bind(this)} />
+            <Component2 handleFunction={this.handleData} />
           </Route>
         </Switch>
       </Router>
