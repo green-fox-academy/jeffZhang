@@ -1,0 +1,23 @@
+.Editor {
+  width: 36%;
+  border: thin solid lightblue;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Editor .header {
+  background-color: #eeeeee;
+  height: 5em;
+}
+
+.Editor .body {
+  height: 100%;
+}
+
+.Editor .textarea{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
