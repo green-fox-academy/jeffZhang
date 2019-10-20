@@ -1,0 +1,9 @@
+.app {
+  /* text-align: center; */
+  background: radial-gradient(#cbb4d4, white);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,14 @@
+.thumbnail-list {
+  width: 50%;
+  min-height: 2em;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  /* overflow-y: visible; */
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.thumbnail-list::-webkit-scrollbar {
+  display: none;
+}
