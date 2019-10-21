@@ -1,0 +1,12 @@
+.list {
+  list-style: none;
+}
+
+.element {
+  background-color: #dc133b;
+  margin-bottom: 1em;
+}
+
+.element:hover{
+  cursor: pointer;
+}

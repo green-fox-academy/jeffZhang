@@ -1,6 +1,11 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 
+.block {
+  display: flex;
+  justify-content: space-around;
+}

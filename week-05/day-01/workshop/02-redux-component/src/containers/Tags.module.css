@@ -1,0 +1,8 @@
+.list {
+  list-style: none;
+}
+
+.element {
+  background-color: #6495ed;
+  margin-bottom: 1em;
+}

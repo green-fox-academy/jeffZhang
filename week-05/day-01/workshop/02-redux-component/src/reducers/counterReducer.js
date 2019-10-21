@@ -1,4 +1,4 @@
-export const counterReducer = (state = 0, action) => {
+const counterReducer = (state = 0, action) => {
   let { type, amount } = action
   let newCounter = state
 
@@ -17,3 +17,5 @@ export const counterReducer = (state = 0, action) => {
       return state
   }
 }
+
+export default counterReducer
