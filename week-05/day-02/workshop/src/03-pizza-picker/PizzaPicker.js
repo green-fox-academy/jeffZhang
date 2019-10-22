@@ -36,7 +36,7 @@ class PizzaPicker extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
         <h1>Pizza picker</h1>
