@@ -18,27 +18,35 @@ function Chats(props) {
     console.log(chatData)
   }, [chatData])
 
-  const handleSubmit = () => {}
+  const handleSubmit = event => {
+    event.preventDefault()
+    postMessage(CHAT_DOMAIN, 'jeff', msg)
+    setMsg('')
+  }
 
-  const handleChange = () => {}
+  const handleChange = event => {
+    const target = event.target
+    setMsg(target.value)
+  }
 
   return (
-    <div>
+    <div className={styles['chat-app']}>
       <h1>Let's chat</h1>
       <ul className={styles['dialog-block']}>
         {chatData['messagesData']['messages']
           ? chatData['messagesData']['messages'].map((msg, index) => {
-              return (
-                <li key={index} className={styles['dialog']}>
-                  <p
-                    className={
-                      msg['user'] === 'jeff' ? styles['self'] : styles['other']
-                    }
-                  >
-                    {msg['text']}
-                  </p>
+              return msg['text'] && msg['text'].trim() !== '' ? (
+                <li
+                  key={index}
+                  className={
+                    msg['user'] === 'jeff'
+                      ? styles['dialog-self']
+                      : styles['dialog-other']
+                  }
+                >
+                  <p>{msg['text']}</p>
                 </li>
-              )
+              ) : null
             })
           : null}
       </ul>

@@ -47,7 +47,8 @@ export const postMessage = (url, user, text) => {
       }),
       headers: new Headers({
         'Content-Type': 'application/json'
-      })
+      }),
+      mode: 'no-cors'
     })
       .then(response => response.json())
       .then(data => dispatch(postMessageSuccess(data)))

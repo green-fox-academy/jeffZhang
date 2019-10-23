@@ -1,24 +1,58 @@
-.msg-block {
-  position: fixed;
-  bottom: 2em;
+.chat-app {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* box-sizing: border-box; */
 }
 
 .dialog-block {
-  background-color: lightgrey;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border: thin solid black;
+  overflow: auto;
+  height: 80vh;
+  padding: 0 2em;
 }
 
-.dialog {
+.dialog-other {
   display: flex;
-}
-
-.dialog .other {
+  margin-bottom: 1em;
   justify-content: flex-start;
+  background-color: lightgrey;
 }
 
-.dialog .self {
+.dialog-self {
+  color: white;
+  display: flex;
+  margin-bottom: 1em;
   justify-content: flex-end;
+  background-color: green;
+}
+
+.msg-block {
+  /* border: thin solid black; */
+  width: 100%;
+  height: 3em;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.msg-block input {
+  color: #fd841c;
+  background-color: #7edbff;
+  height: 100%;
+  width: 60%;
+  font-size: 2.5em;
+}
+
+.msg-block button{
+  background-color: #7EDBFF;
+  font-size: 2.5em;
+  height: 100%;
+  width: 10%;
 }
