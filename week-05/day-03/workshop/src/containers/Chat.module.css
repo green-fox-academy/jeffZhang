@@ -1,0 +1,24 @@
+.msg-block {
+  position: fixed;
+  bottom: 2em;
+}
+
+.dialog-block {
+  background-color: lightgrey;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dialog {
+  display: flex;
+}
+
+.dialog .other {
+  justify-content: flex-start;
+}
+
+.dialog .self {
+  justify-content: flex-end;
+}

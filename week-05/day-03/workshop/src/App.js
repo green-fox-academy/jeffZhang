@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
 
-import Users from './containers/Users'
+import Chats from './containers/Chats'
 
 function App() {
   return (
     <div className="App">
       <div className="block">
-        <Users />
+        <Chats />
       </div>
     </div>
   )
