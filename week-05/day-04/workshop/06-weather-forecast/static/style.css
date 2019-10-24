@@ -26,11 +26,22 @@ li {
   background-color: white;
   box-shadow: 10px 5px 5px gainsboro;
   border: 0px solid black;
+  cursor: pointer;
+  border-radius: 1em;
+}
+
+li a {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  border-radius: 1em;
+  text-decoration: none;
+  color: black;
+}
+
+li a:visited {
+  color: black;
 }
 
 div[class='name'] {
@@ -62,5 +73,9 @@ div[class='degree'] {
 div[class='icon'] {
   /* background-color: lightpink; */
   width: 30%;
+  height: 100%;
+}
+
+.img {
   height: 100%;
 }

@@ -16,16 +16,27 @@
     <ul>
       <% cities.forEach((city)=>{ %>
       <li>
-        <div class="name">
-          <p class="city-name"><%= city.city %></p>
-          <p class="city-location"><%= city.location%></p>
-        </div>
-        <div class="degree">
-          <%= city.weather[0].temp%>&#8451;
-        </div>
-        <div class="icon"></div>
+        <a href="/cities/<%= city.city%>">
+          <div class="name">
+            <p class="city-name"><%= city.city %></p>
+            <p class="city-location"><%= city.location%></p>
+          </div>
+          <div class="degree">
+            <%= city.weather[0].temp%>&#8451;
+          </div>
+          <div class="icon">
+            <img
+              src="/static/<%= city.weather[0].icon%>.png"
+              alt=""
+              class="img"
+            />
+          </div>
+        </a>
       </li>
       <% }) %>
     </ul>
+    <script>
+      document.querySelectorAll
+    </script>
   </body>
 </html>

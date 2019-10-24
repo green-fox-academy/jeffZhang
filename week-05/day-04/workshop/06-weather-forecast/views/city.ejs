@@ -16,9 +16,15 @@
     <ul>
       <% city.weather.forEach((element)=>{ %>
       <li>
-        <div class="icon"></div>
-        <div class="degree"><%= element.temp%></div>
-        <div class="condition"></div>
+        <div class="icon">
+          <img src="/static/<%= element.icon%>.png" alt="" class="img" />
+        </div>
+        <div class="degree">
+          <span><%= element.temp%> &#8451;</span>
+        </div>
+        <div class="message">
+          <%= element.message%>
+        </div>
       </li>
       <% }) %>
     </ul>
