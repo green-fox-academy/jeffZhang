@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cocktails</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Cocktails</h1>
+    
+    <div>
+      <a href="/">All</a>
+      <% alcoholList.forEach((alcohol)=>{%>
+      <a href="<%="/?alcohol="+alcohol%>"><%=alcohol%></a>
+      <%})%>
+    </div>
+    
+    <table>
+      <tbody>
+        <tr>
+          <td>NAME</td>
+          <td>PRICE</td>
+        </tr>
+
+        <% cocktails.forEach(function (cocktail) {%>
+        <tr>
+          <td>
+            <%= cocktail.contains.some(aType => alcoholList.includes(aType))
+            ?cocktail.name :cocktail.name+'(non-alcoholic)'%>
+            <div>
+              <%= cocktail.contains.toString() %>
+            </div>
+          </td>
+          <td>
+            <%= cocktail.price %> Ft
+          </td>
+        </tr>
+
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
