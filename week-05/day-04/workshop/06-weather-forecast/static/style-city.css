@@ -1,0 +1,66 @@
+body {
+  font-family: 'Dancing Script', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  width: 70%;
+  height: 30vh;
+  overflow: auto;
+  background-color: #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+li {
+  height: 90%;
+  width: 30%;
+  background-color: white;
+  box-shadow: 10px 5px 5px gainsboro;
+  border: 0px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 1em;
+  margin-right: 1em;
+}
+
+div[class='name'] {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 40%;
+  height: 100%;
+  /* background-color: lightsalmon; */
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+div[class='name'] .city-name {
+  font-size: 1.6em;
+  margin: 0.5em;
+}
+
+div[class='name'] .city-location {
+  margin: 0.5em;
+}
+
+div[class='degree'] {
+  font-size: 2.5em;
+  width: 20%;
+  /* background-color: lightCyan; */
+}
+
+div[class='icon'] {
+  /* background-color: lightpink; */
+  width: 30%;
+  height: 100%;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cities</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Weather Channel</h1>
+    <ul>
+      <% cities.forEach((city)=>{ %>
+      <li>
+        <div class="name">
+          <p class="city-name"><%= city.city %></p>
+          <p class="city-location"><%= city.location%></p>
+        </div>
+        <div class="degree">
+          <%= city.weather[0].temp%>&#8451;
+        </div>
+        <div class="icon"></div>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

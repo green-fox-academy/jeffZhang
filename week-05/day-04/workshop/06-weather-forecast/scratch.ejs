@@ -1,0 +1,31 @@
+<div>
+    <a href="/">All</a>
+    <% alcoholList.forEach((alcohol)=>{%>
+    <a href="<%="/?alcohol="+alcohol%>"><%=alcohol%></a>
+    <%})%>
+  </div>
+  
+  <table>
+    <tbody>
+      <tr>
+        <td>NAME</td>
+        <td>PRICE</td>
+      </tr>
+
+      <% cocktails.forEach(function (cocktail) {%>
+      <tr>
+        <td>
+          <%= cocktail.contains.some(aType => alcoholList.includes(aType))
+          ?cocktail.name :cocktail.name+'(non-alcoholic)'%>
+          <div>
+            <%= cocktail.contains.toString() %>
+          </div>
+        </td>
+        <td>
+          <%= cocktail.price %> Ft
+        </td>
+      </tr>
+
+      <%})%>
+    </tbody>
+  </table>
