@@ -1,0 +1,14 @@
+<h1>
+  <%=person %>
+</h1>
+
+<strong>
+  <%= data.job %>
+</strong>
+
+<h2>Hobbies</h2>
+<ul>
+  <% data.hobbies.forEach( function(hobby){ %>
+  <li><%= hobby%></li>
+  <% }) %>
+</ul>
