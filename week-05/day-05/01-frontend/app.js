@@ -1,4 +1,4 @@
-const PORT = 3000
+const PORT = 8080
 const express = require('express')
 const path = require('path')
 
@@ -12,18 +12,10 @@ app.get('/', (req, res) => {
 })
 
 //------------------------helpers------------------------------//
-const sum = number => {
-  let result = 0
-  for (let i = 0; i <= number; i++) {
-    result += i
-  }
-  return result
-}
-
-const factor = number => {
+const operate = (action, number) => {
   let result = 1
-  for (let i = 1; i <= number; i++) {
-    result *= i
+  for (let i = 2; i <= number; i++) {
+    result = action === 'sum' ? result + i : result * i
   }
   return result
 }
@@ -31,62 +23,66 @@ const factor = number => {
 //-------------------------doubling-----------------------------//
 app.get('/doubling', (req, res) => {
   const { query } = req
-  if (query.input) {
-    res.json({ received: query.input, result: query.input * 2 })
-  } else {
-    res.json({
-      error: 'Please provide an input!'
-    })
-  }
+  res.json(
+    query.input
+      ? { received: query.input, result: query.input * 2 }
+      : { error: 'Please provide an input!' }
+  )
 })
 
 //---------------------------greeter---------------------------//
 app.get('/greeter', (req, res) => {
   const { query } = req
+  let resData = {}
 
   if (query.name && query.title) {
-    res.json({
-      welcome_message: `Oh, hi there ${query.name}, my dear student!`
-    })
+    resData = {
+      welcome_message: `Oh, hi there ${query.name}, my dear ${query.title}!`
+    }
   } else if (!query.name && query.title) {
-    res.json({
+    resData = {
       error: 'Please provide a name!'
-    })
+    }
   } else if (!query.title && query.name) {
-    res.json({
+    resData = {
       error: 'Please provide a title!'
-    })
+    }
   } else {
-    res.json({
+    resData = {
       error: 'Please provide a name and a title!'
-    })
+    }
   }
+  res.json(resData)
 })
 
 //------------------------append a------------------------------//
 app.get('/appenda/:appendable', (req, res) => {
   const { params } = req
-  if (params.appendable) {
-    res.json({
-      appended: params.appendable + 'a'
-    })
-  }
-  res.send('404 page not found')
+  res.json({
+    appended: params.appendable + 'a'
+  })
 })
 
 //-------------------------do until-----------------------------//
 app.post('/dountil/:action', (req, res) => {
   const { params, body } = req
   const number = body.until
+
   if (number) {
-    switch (params.action) {
+    let resData = {}
+    const { action } = params
+    switch (action) {
       case 'sum':
-        res.json({ result: sum(number) })
+        resData = { result: operate(action, number) }
+        break
       case 'factor':
-        res.json({ result: factor(number) })
+        resData = { result: operate(action, number) }
+        break
       default:
-        res.json({ result: number })
+        resData = { result: number }
+        break
     }
+    res.json(resData)
   }
   res.json({
     error: 'Please provide a number!'
