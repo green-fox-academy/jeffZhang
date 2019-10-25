@@ -8,6 +8,6 @@
   },
   "scripts": {
     "remind": "echo using 'yarn start' in the workshop folder could avoid cd to specific folder and fire nodemon index.js, but remember to change the folder accordingly",
-    "start": "cd 03-reverse-of-sith && nodemon app.js"
+    "start": "cd 04-translator && nodemon app.js"
   }
 }
