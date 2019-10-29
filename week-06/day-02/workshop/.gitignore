@@ -1,3 +1,7 @@
 /node_modules
 
+# ignore env files
 *.env
+
+# ignore csv files
+*.csv

@@ -1,5 +1,6 @@
 //-------------------------env & helpers-----------------------------//
 require('dotenv').config()
+const PORT = process.env.SERVER_PORT || 3000
 const {
   sql_book_titles,
   sql_book_all,
@@ -35,6 +36,6 @@ app.get('/books', async (req, res) => {
   }
 })
 
-app.listen(process.env.SERVER_PORT, () => {
-  console.log(`server running on port ${process.env.SERVER_PORT}`)
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`)
 })
