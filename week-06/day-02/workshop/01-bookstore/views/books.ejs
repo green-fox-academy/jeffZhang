@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book all</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Book all</h1>
+    <table>
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>NAME</td>
+          <td>ISBN</td>
+          <td>CATEGORY ID</td>
+          <td>AUTHOR ID</td>
+          <td>PUBLICATION ID</td>
+          <td>PUBLICATION DATE</td>
+          <td>PUBLICATION LANGUAGE</td>
+          <td>PAGES</td>
+          <td>PRICE</td>
+        </tr>
+        <% books.forEach(function (book) {%>
+        <tr>
+          <% for(let [key,value] of Object.entries(book)){%> <%if(key ===
+          'dt_of_pub'){%>
+          <td><%=value.toLocaleDateString()%></td>
+          <%}else{%>
+          <td><%=value%></td>
+          <%}%> <%}%>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
