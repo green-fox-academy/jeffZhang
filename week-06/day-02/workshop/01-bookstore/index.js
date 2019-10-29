@@ -1,6 +1,10 @@
 //-------------------------env & helpers-----------------------------//
 require('dotenv').config()
-const { sql_book_titles, sql_book_all } = require('./sql-helpers')
+const {
+  sql_book_titles,
+  sql_book_all,
+  makeFilterSQL
+} = require('./sql-helpers')
 
 //---------------------------query promise---------------------------//
 const { queryWithPromise } = require('./mysql-connection')
@@ -24,7 +28,7 @@ app.get('/booktitles', async (req, res) => {
 
 app.get('/books', async (req, res) => {
   try {
-    let books = await queryWithPromise(sql_book_all)
+    let books = await queryWithPromise(makeFilterSQL(req.query))
     res.render('books', { books })
   } catch (err) {
     res.render('errorPage', { err })

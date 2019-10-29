@@ -23,7 +23,7 @@
           <% for(let [key,value] of Object.entries(book)){%> <%if(key ===
           'dt_of_pub'){%>
           <td><%=value.toLocaleDateString()%></td>
-          <%}else if(key === 'book_price'){%>
+          <%}else if(key === 'price'){%>
           <td>$<%=value%></td>
           <%}else{%>
           <td><%=value%></td>
