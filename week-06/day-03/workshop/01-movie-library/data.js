@@ -1,7 +1,7 @@
 let movies = [
   {
     id: 12,
-    title: 'Forrest Gump',
+    name: 'Forrest Gump',
     genre: 'drama'
   },
   {

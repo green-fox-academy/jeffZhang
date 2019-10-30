@@ -1,7 +1,7 @@
+const AUTHORIZATION = process.env.AUTHORIZATION
 let movies = require('./data')
-const url = require('url')
 
-exports.getMovies = function(genre, res) {
+exports.getMovies = (genre, res) => {
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
 
@@ -13,11 +13,48 @@ exports.getMovies = function(genre, res) {
   res.end(JSON.stringify(movies))
 }
 
+exports.getMovieById = (movieId, res) => {
+  const filteredMovies = movies.find(movie => movie.id === movieId)
+  if (filteredMovies) {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(filteredMovies))
+    return
+  }
+  res.statusCode = 404
+  res.setHeader('Content-Type', 'text/plain')
+  res.end(`Couldn't find that movie with id ${movieId}`)
+}
+
+exports.deleteMovieById = (movieId, req, res) => {
+  if (req.headers.authorization === AUTHORIZATION) {
+    const originLength = movies.length
+    movies = movies.filter(movie => movie.id !== movieId)
+
+    if (originLength === movies.length) {
+      res.statusCode = 404
+      res.setHeader('Content-Type', 'text/plain')
+      res.end(
+        `couldn't find the movie with id ${movieId}, no deletion happened`
+      )
+      return
+    }
+
+    res.statusCode = 204
+    /*doesn't need return anything for a delete operation, nothing will return...*/
+    res.end()
+    return
+  }
+
+  res.statusCode = 403
+  res.setHeader('Content-Type', 'text/plain')
+  res.end('not authorized')
+}
+
 exports.postAMovie = (req, res) => {
   let [movieId, movieName, movieGenre] = [undefined]
 
   req.on('data', function(chunk) {
-    /*chunk is a binary buffer*/
     const postData = JSON.parse(chunk)
     movieId = postData.id
     movieName = postData.name
@@ -25,8 +62,10 @@ exports.postAMovie = (req, res) => {
   })
 
   req.on('end', function() {
-    if (req.headers.authorization === 'top-secret') {
-      const existed = movies.some(movie => movie.name === movieName)
+    if (req.headers.authorization === AUTHORIZATION) {
+      const existed = movies.some(
+        movie => movie.name === movieName || movie.id === movieId
+      )
       if (!movieName || !movieId) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
@@ -59,49 +98,7 @@ exports.postAMovie = (req, res) => {
   })
 }
 
-exports.getMovieById = function(movieId, res) {
-  const filteredMovies = movies.find(movie => movie.id === parseInt(movieId))
-  if (filteredMovies) {
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(filteredMovies))
-    return
-  }
-  res.statusCode = 404
-  res.setHeader('Content-Type', 'text/plain')
-  res.end(`cant find that movie with id ${movieId}`)
-}
-
-exports.deleteMovieById = (movieId, req, res) => {
-  req.on('data', function(chunk) {
-    console.log('do nothing')
-  })
-
-  req.on('end', function() {
-    if (req.headers.authorization === 'top-secret') {
-      const originLength = movies.length
-      movies = movies.filter(movie => movie.id !== parseInt(movieId))
-      if (originLength === movies.length) {
-        res.statusCode = 403
-        res.setHeader('Content-Type', 'text/plain')
-        res.end(
-          `couldn't find the movie with id ${movieId}, no deletion happened`
-        )
-        return
-      }
-      res.statusCode = 204
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(movies))
-      return
-    }
-
-    res.statusCode = 403
-    res.setHeader('Content-Type', 'text/plain')
-    res.end('not authorized')
-  })
-}
-
-exports.updateMovieById = (id, req, res) => {
+exports.putMovieById = (id, req, res) => {
   let [movieId, movieName, movieGenre] = [undefined]
 
   req.on('data', function(chunk) {
@@ -112,8 +109,8 @@ exports.updateMovieById = (id, req, res) => {
   })
 
   req.on('end', function() {
-    if (req.headers.authorization === 'top-secret') {
-      const existed = movies.some(movie => movie.id === parseInt(id))
+    if (req.headers.authorization === AUTHORIZATION) {
+      const existed = movies.some(movie => movie.id === id)
       if (!movieName || !movieId || !movieGenre) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
@@ -128,14 +125,14 @@ exports.updateMovieById = (id, req, res) => {
         return
       }
 
-      if (parseInt(id) !== movieId) {
+      if (id !== movieId) {
         res.statusCode = 400
         res.setHeader('Content-Type', 'text/plain')
         res.end(`url id is not the same with id in the body`)
         return
       }
 
-      movies = movies.filter(movie => movie.id !== parseInt(id))
+      movies = movies.filter(movie => movie.id !== id)
       movies.push({ id: movieId, name: movieName, genre: movieGenre })
 
       res.statusCode = 200
@@ -150,32 +147,8 @@ exports.updateMovieById = (id, req, res) => {
   })
 }
 
-exports.invalidRequest = function(req, res) {
+exports.invalidRequest = (req, res) => {
   res.statusCode = 404
   res.setHeader('Content-Type', 'text/plain')
-  res.end('Invalid Request')
-}
-
-exports.test = () => {
-  body = ''
-
-  req.on('data', function(chunk) {
-    /*chunk is a binary buffer*/
-    console.log('execute just once and chunk is', chunk.toString())
-    body += chunk
-    console.log(body)
-  })
-
-  req.on('end', function() {
-    postBody = JSON.parse(body)
-    console.log('postBoy', postBody)
-
-    var response = {
-      text: 'Post Request Value is  ' + postBody.a
-    }
-
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(response))
-  })
+  res.end('Invalid Request 404')
 }

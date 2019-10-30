@@ -1,7 +1,8 @@
 const getMovieId = reqUrl => {
   const pathElements = reqUrl.pathname.split('/')
-  // console.log(pathElements)
-  return pathElements[2] ? pathElements[2] : undefined
+  let movieId = parseInt(pathElements[2])
+
+  return movieId ? movieId : undefined
 }
 
 const getGenreQuery = reqUrl => {
