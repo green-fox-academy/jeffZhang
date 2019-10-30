@@ -3,5 +3,5 @@
 # ignore env files
 *.env
 
-# ignore csv files
-*.csv
+# ignore sql files
+*.sql
