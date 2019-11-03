@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { increaseCounter } from '../actions/counterActions'
+import { changeNumber } from '../actions/counterActions'
 
 function Increaser(props) {
   return (
@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     increaseCounter: () => {
-      dispatch(increaseCounter(1))
+      dispatch(changeNumber(1))
     }
   }
 }

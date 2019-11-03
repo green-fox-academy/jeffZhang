@@ -1,15 +1,7 @@
-export const increaseCounter = (amount = 1) => {
-  return { type: 'INCREASE', amount }
+export const changeNumber = (amount = 1) => {
+  return { type: 'CHANGE_BY', amount }
 }
 
-export const decreaseCounter = (amount = 1) => {
-  return { type: 'DECREASE', amount }
-}
-
-export const resetCounter = () => {
-  return { type: 'RESET' }
-}
-
-export const setCounter = amount => {
-  return { type: 'SET', amount }
+export const setNumber = (amount = 0) => {
+  return { type: 'SET_TO', amount }
 }

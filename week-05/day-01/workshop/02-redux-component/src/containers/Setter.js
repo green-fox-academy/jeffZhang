@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { setCounter } from '../actions/counterActions'
+import { setNumber } from '../actions/counterActions'
 
 function Setter(props) {
   const [value, setValue] = useState('')
@@ -17,7 +17,7 @@ function Setter(props) {
   return (
     <div className="Setter">
       <h1>The Setter</h1>
-      <input type="text" onChange={handleChange} value={value}/>
+      <input type="text" onChange={handleChange} value={value} />
       <button onClick={handleClick}>Set</button>
     </div>
   )
@@ -25,8 +25,8 @@ function Setter(props) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCounter: number => {
-      dispatch(setCounter(number))
+    setCounter: (number = 0) => {
+      dispatch(setNumber(number))
     }
   }
 }

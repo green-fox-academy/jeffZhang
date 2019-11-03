@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { resetCounter } from '../actions/counterActions'
+import { setNumber } from '../actions/counterActions'
 
 function Resetter(props) {
   return (
@@ -14,7 +14,7 @@ function Resetter(props) {
 const mapDispatchToProps = dispatch => {
   return {
     resetCounter: () => {
-      dispatch(resetCounter())
+      dispatch(setNumber(0))
     }
   }
 }
