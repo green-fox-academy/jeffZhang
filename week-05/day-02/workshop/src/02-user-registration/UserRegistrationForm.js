@@ -6,16 +6,14 @@ const initState = {
   password: ''
 }
 
+const validate = (name, email, password) => ({
+  name: !name,
+  email: !email.includes('@'),
+  password: password.length < 8
+})
+
 class UserRegistrationForm extends Component {
   state = initState
-
-  validate = () => {
-    const { userName, emailAddress, password } = this.state
-    if (!userName || !emailAddress.includes('@') || password.length < 8) {
-      return false
-    }
-    return true
-  }
 
   handleChange = event => {
     let { name, value } = event.target
@@ -26,11 +24,14 @@ class UserRegistrationForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
     this.setState(initState)
   }
 
   render() {
+    /*validate before render*/
+    const { userName, emailAddress, password } = this.state
+    const errors = validate(userName, emailAddress, password)
+    const isDisabled = Object.keys(errors).some(key => errors[key])
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -55,7 +56,7 @@ class UserRegistrationForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button disabled={!this.validate()}>Submit</button>
+          <button disabled={isDisabled}>Submit</button>
         </form>
       </div>
     )
