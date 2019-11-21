@@ -29,12 +29,14 @@ function Chats(props) {
     setMsg(target.value)
   }
 
+  const { messages } = chatData.messagesData
+
   return (
     <div className={styles['chat-app']}>
       <h1>Let's chat</h1>
       <ul className={styles['dialog-block']}>
-        {chatData['messagesData']['messages']
-          ? chatData['messagesData']['messages'].map((msg, index) => {
+        {messages
+          ? messages.map((msg, index) => {
               return msg['text'] && msg['text'].trim() !== '' ? (
                 <li
                   key={index}
@@ -75,7 +77,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Chats)
+export default connect(mapStateToProps, mapDispatchToProps)(Chats)
