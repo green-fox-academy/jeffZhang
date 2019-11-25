@@ -10,19 +10,17 @@ app.use('/static', express.static('static'))
 app.get('/', (req, res) => {
   const { query } = req
   //igonre all the queries if alcohol is not there
-  if (Object.keys(query).includes('alcohol')) {
-    const type = query['alcohol']
-    if (alcoholList.includes(type)) {
-      let results = cocktails.filter(cocktail =>
-        cocktail.contains.includes(type)
-      )
-      res.render('home', { cocktails: results, alcoholList })
-    } else {
-      res.render('home', { cocktails, alcoholList })
-    }
-  } else {
-    res.render('home', { cocktails, alcoholList })
+  if (
+    Object.keys(query).includes('alcohol') &&
+    alcoholList.includes(query['alcohol'])
+  ) {
+    let results = cocktails.filter(cocktail =>
+      cocktail.contains.includes(query['alcohol'])
+    )
+    res.status(200).render('home', { cocktails: results, alcoholList })
+    return
   }
+  res.status(200).render('home', { cocktails, alcoholList })
 })
 
 app.listen(PORT, () => {
