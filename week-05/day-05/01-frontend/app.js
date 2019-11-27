@@ -58,9 +58,13 @@ app.get('/greeter', (req, res) => {
 //------------------------append a------------------------------//
 app.get('/appenda/:appendable', (req, res) => {
   const { params } = req
-  res.json({
-    appended: params.appendable + 'a'
-  })
+  res.json(
+    params.appendable
+      ? {
+          appended: params.appendable + 'a'
+        }
+      : { warning: 'appendable in the path is missing' }
+  )
 })
 
 //-------------------------do until-----------------------------//
