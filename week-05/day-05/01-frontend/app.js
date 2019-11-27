@@ -12,12 +12,23 @@ app.get('/', (req, res) => {
 })
 
 //------------------------helpers------------------------------//
-const operate = (action, number) => {
-  let result = 1
-  for (let i = 2; i <= number; i++) {
-    result = action === 'sum' ? result + i : result * i
+const getSum = until => (until * (until + 1)) / 2
+
+const getFactor = until => {
+  let factor = 1
+  for (let i = 1; i <= until; i++) {
+    factor = factor * i
   }
-  return result
+  return factor
+}
+
+const mapAction = (action, until) => {
+  const actions = {
+    sum: getSum,
+    factor: getFactor,
+    default: until => until
+  }
+  return parseInt((actions[action] || actions['default'])(until))
 }
 
 //-------------------------doubling-----------------------------//
@@ -70,23 +81,10 @@ app.get('/appenda/:appendable', (req, res) => {
 //-------------------------do until-----------------------------//
 app.post('/dountil/:action', (req, res) => {
   const { params, body } = req
-  const number = body.until
 
-  if (number) {
-    let resData = {}
-    const { action } = params
-    switch (action) {
-      case 'sum':
-        resData = { result: operate(action, number) }
-        break
-      case 'factor':
-        resData = { result: operate(action, number) }
-        break
-      default:
-        resData = { result: number }
-        break
-    }
-    res.json(resData)
+  if (body.until && params.action) {
+    res.json({ result: mapAction(params.action, body.until) })
+    return
   }
   res.json({
     error: 'Please provide a number!'
